@@ -11,7 +11,7 @@ public class Singleton1 {
 
     public static int FLAG = 1;
 
-    private Singleton1(){
+    private Singleton1() {
         System.out.println("创建实例");
     }
 
