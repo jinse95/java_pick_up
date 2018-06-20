@@ -30,11 +30,11 @@ public class Window implements Runnable {
     @Override
     public void run() {
         while (working) {
-            if (this.isVip) {
+//            if (this.isVip) {
 //                System.out.println("vip窗口: " + this.name + "空闲中");
-            } else {
-                System.out.println(this.name + "空闲中");
-            }
+//            } else {
+//                System.out.println(this.name + "空闲中");
+//            }
 
             this.dealBiz();
 
@@ -48,38 +48,36 @@ public class Window implements Runnable {
      * 模拟业务处理
      */
     private void dealBiz() {
-        try {
-//            System.out.println("正在分配窗口.......");
-            if (this.isVip) {
-                Consumer consumer = consumerQueue.outVip();
-                if (consumer == null) {
-                    return;
-                }
-                System.out.println(this.name + "处理中, 当前vip客户: " + consumer.getName());
-            } else {
-                Consumer consumer = consumerQueue.outQueue();
-                if (consumer == null) {
-                    return;
-                }
-                if (consumer.isVip) {
-                    System.out.println(this.name + "处理中,当前vip客户: " + consumer.getName());
-                } else {
-                    System.out.println(this.name + "处理中,当前客户: " + consumer.getName());
-                }
+
+        if (this.isVip) {
+            //取出vip客户
+            Consumer consumer = consumerQueue.outVip();
+            if (consumer == null) {
+                return;
+            }
+//            System.out.println(this.name + "处理中, 当前vip客户: " + consumer.getName());
+        } else {
+            //取出客户
+            Consumer consumer = consumerQueue.outQueue();
+            if (consumer == null) {
+                return;
             }
 
-            Thread.sleep(2000L);
-
-            if (this.isVip) {
-                System.out.println(this.name + "处理完成");
-            } else {
-                System.out.println(this.name + "处理完成");
-            }
-//            this.consumerQueue.printQueue();
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+//            if (consumer.isVip) {
+//                System.out.println(this.name + "处理中,当前vip客户: " + consumer.getName());
+//            } else {
+//                System.out.println(this.name + "处理中,当前客户: " + consumer.getName());
+//            }
         }
+
+//        try {
+//            //业务处理中
+//            Thread.sleep(200L);
+////            System.out.println(this.name + "处理完成, Next One");
+//
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
     }
 }

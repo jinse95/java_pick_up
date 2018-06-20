@@ -89,10 +89,14 @@ public class ConsumerQueue {
      * vip优先出队列
      */
     public synchronized Consumer outVip() {
-
         Node node = this.head;
         while (node != null) {
             if (node.consumer.isVip) {
+                try {
+                    Thread.sleep(100L);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
                 Node preVip = node.pre;
                 Node nextVip = node.next;
@@ -122,16 +126,16 @@ public class ConsumerQueue {
         return null;
     }
 
-    public synchronized void printQueue(Consumer consumer) {
+    public void printQueue(Consumer consumer) {
         System.out.println(Thread.currentThread().getName() + "---" + consumer + "   出队了-------");
-        System.out.print(Thread.currentThread().getName() + "---" + "还在排队的有:  ");
-        Node node = this.head;
-        while (node != null) {
-            System.out.printf(node.consumer.toString());
-            node = node.next;
-        }
-        System.out.println();
-        System.out.println(Thread.currentThread().getName() + "---" + "打印剩余客户完成------");
+//        System.out.print(Thread.currentThread().getName() + "---" + "还在排队的有:  ");
+//        Node node = this.head;
+//        while (node != null) {
+//            System.out.printf(node.consumer.toString());
+//            node = node.next;
+//        }
+//        System.out.println();
+//        System.out.println(Thread.currentThread().getName() + "---" + "打印剩余客户完成------");
     }
 
     class Node {
