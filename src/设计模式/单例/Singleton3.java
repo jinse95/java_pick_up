@@ -21,4 +21,11 @@ public class Singleton3 {
     private static class SingletonHolder {
         private static Singleton3 instance = new Singleton3();
     }
+
+    public static void main(String[] args) {
+        Integer wordNum = 11;
+        Integer upNum = 7;
+
+        System.out.println(upNum * 100 / wordNum);
+    }
 }
