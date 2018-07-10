@@ -31,7 +31,8 @@ public class KMeansIris {
                 if (str != null && str.length() > 0) {
                     String[] properties = str.split(" ");
                     Iris iris = new Iris();
-                    //第一项是编号 从第二项开始取
+
+                    iris.setId(Long.valueOf(properties[0]));
                     iris.setSepalLength(Double.valueOf(properties[1]));
                     iris.setSepalWidth(Double.valueOf(properties[2]));
                     iris.setPetalLength(Double.valueOf(properties[3]));
@@ -106,39 +107,31 @@ public class KMeansIris {
     public static void main(String[] args) {
         List<Iris> irisList = loadData("d:/iris.txt");
 
-        printList(irisList);
-
+//        printList(irisList);
 
         List<Iris> irisList1 = new ArrayList<>();
         List<Iris> irisList2 = new ArrayList<>();
         List<Iris> irisList3 = new ArrayList<>();
 
-        Iris center1 = irisList.get(10);
-        Iris center2 = irisList.get(50);
-        Iris center3 = irisList.get(60);
-
-        for (Iris item : irisList) {
-
-            double a = calculateDistance(item, center1);
-            double b = calculateDistance(item, center2);
-            double c = calculateDistance(item, center3);
-
-            double min = Math.min(a, Math.min(b, c));
-            if (min == a) {
-                irisList1.add(item);
-            } else if (min == b) {
-                irisList2.add(item);
-            } else if (min == c) {
-                irisList3.add(item);
-            }
-        }
+        Iris center1 = irisList.get(140);
+        Iris center2 = irisList.get(30);
+        Iris center3 = irisList.get(80);
 
 
-        Iris center10 = getCenter(irisList1), center20 = getCenter(irisList2), center30 = getCenter(irisList3);
+        int count = 0;
+
+        Iris center10 = null, center20 = null, center30 = null;
         while (!center1.equals(center10) || !center2.equals(center20) || !center3.equals(center30)) {
-            center1 = center10;
-            center2 = center20;
-            center3 = center30;
+            if (count > 0) {
+                center1 = center10;
+                center2 = center20;
+                center3 = center30;
+            }
+
+            System.out.println(center1);
+            System.out.println(center2);
+            System.out.println(center3);
+            System.out.println("===================");
 
             irisList1 = new ArrayList<>();
             irisList2 = new ArrayList<>();
@@ -163,8 +156,10 @@ public class KMeansIris {
             center10 = getCenter(irisList1);
             center20 = getCenter(irisList2);
             center30 = getCenter(irisList3);
+            count++;
         }
 
+        System.out.println("count: " + count);
         printList(irisList1);
         printList(irisList2);
         printList(irisList3);

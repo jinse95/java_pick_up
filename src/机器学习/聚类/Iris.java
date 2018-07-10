@@ -10,6 +10,8 @@ public class Iris {
     public Iris() {
     }
 
+    private Long id;
+
     private Double sepalLength;
 
     private Double sepalWidth;
@@ -19,6 +21,14 @@ public class Iris {
     private Double petalWidth;
 
     private String species;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Double getSepalLength() {
         return sepalLength;
@@ -63,7 +73,8 @@ public class Iris {
     @Override
     public String toString() {
         return "Iris{" +
-                "sepalLength=" + sepalLength +
+                "id=" + id +
+                ", sepalLength=" + sepalLength +
                 ", sepalWidth=" + sepalWidth +
                 ", petalLength=" + petalLength +
                 ", petalWidth=" + petalWidth +
