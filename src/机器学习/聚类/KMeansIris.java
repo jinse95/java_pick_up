@@ -122,6 +122,7 @@ public class KMeansIris {
 
         Iris center10 = null, center20 = null, center30 = null;
         while (!center1.equals(center10) || !center2.equals(center20) || !center3.equals(center30)) {
+
             if (count > 0) {
                 center1 = center10;
                 center2 = center20;
