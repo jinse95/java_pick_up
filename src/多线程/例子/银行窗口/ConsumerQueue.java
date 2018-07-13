@@ -138,10 +138,13 @@ public class ConsumerQueue {
 //        System.out.println(Thread.currentThread().getName() + "---" + "打印剩余客户完成------");
     }
 
-    class Node {
+    public class Node {
         Consumer consumer;
         Node pre;
         Node next;
+
+        public Node() {
+        }
 
         public Node(Consumer consumer) {
             this.consumer = consumer;

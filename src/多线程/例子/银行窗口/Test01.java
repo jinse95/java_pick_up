@@ -241,6 +241,10 @@ class Node {
     Node front;
     Node next;
 
+    public Node() {
+
+    }
+
     public Node(Custm c) {
         cus = c;
         front = next = null;
