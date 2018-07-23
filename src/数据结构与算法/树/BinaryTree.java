@@ -7,9 +7,13 @@ package 数据结构与算法.树;
  **/
 public class BinaryTree<T> {
 
-    private Node<T> root;
+    protected BinaryTreeNode<T> root;
 
-    public Node<T> getRoot() {
+    public void setRoot(BinaryTreeNode<T> root) {
+        this.root = root;
+    }
+
+    public BinaryTreeNode<T> getRoot() {
         return root;
     }
 
@@ -18,11 +22,11 @@ public class BinaryTree<T> {
      *
      * @return 节点个数
      */
-    public void preOrderTraverse(Node<T> root) {
+    public void preOrderTraverse(BinaryTreeNode<T> root) {
         if (root != null) {
             this.visit(root);
-            preOrderTraverse(root.leftChild);
-            preOrderTraverse(root.rightChild);
+            preOrderTraverse(root.left);
+            preOrderTraverse(root.right);
         }
     }
 
@@ -31,11 +35,11 @@ public class BinaryTree<T> {
      *
      * @return 节点个数
      */
-    public void inOrderTraverse(Node<T> root) {
+    public void inOrderTraverse(BinaryTreeNode<T> root) {
         if (root != null) {
-            inOrderTraverse(root.leftChild);
+            inOrderTraverse(root.left);
             this.visit(root);
-            preOrderTraverse(root.rightChild);
+            inOrderTraverse(root.right);
         }
     }
 
@@ -44,28 +48,50 @@ public class BinaryTree<T> {
      *
      * @return 节点个数
      */
-    public void postOrderTraverse(Node<T> root) {
+    public void postOrderTraverse(BinaryTreeNode<T> root) {
         if (root != null) {
-            postOrderTraverse(root.leftChild);
-            preOrderTraverse(root.rightChild);
+            postOrderTraverse(root.left);
+            postOrderTraverse(root.right);
             this.visit(root);
         }
     }
 
+
+
     /**
      * 遍历时对节点的操作
      *
-     * @param node 当前节点
+     * @param binaryTreeNode 当前节点
      */
-    private void visit(Node<T> node) {
-        System.out.println(node.nodeData);
+    protected void visit(BinaryTreeNode<T> binaryTreeNode) {
+        System.out.println(binaryTreeNode.nodeData);
     }
 
-    class Node<T> {
+    public static class BinaryTreeNode<T> {
+
+        BinaryTreeNode<T> parent;
+
         T nodeData;
 
-        Node<T> leftChild;
+        BinaryTreeNode<T> left;
 
-        Node<T> rightChild;
+        BinaryTreeNode<T> right;
+
+        public BinaryTreeNode() {
+        }
+
+        public BinaryTreeNode(T nodeData) {
+            this.nodeData = nodeData;
+        }
+
+        @Override
+        public String toString() {
+            return "BinaryTreeNode{" +
+                    "parent=" + parent.nodeData +
+                    ", nodeData=" + nodeData +
+                    ", left=" + left.nodeData +
+                    ", right=" + right.nodeData +
+                    '}';
+        }
     }
 }
