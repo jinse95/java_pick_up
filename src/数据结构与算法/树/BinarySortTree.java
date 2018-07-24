@@ -70,15 +70,19 @@ public class BinarySortTree<T extends Comparable<T>> extends BinaryTree<T> {
         BinaryTreeNode<T> right = node.right;
         BinaryTreeNode<T> temp;
 
+        //如果左子树和右子树均为null，直接删除该节点，
+        // 由于java没有指针这一概念，只能把该节点的父节点对它的引用设为null
         if (left == null && right == null) {
             temp = node.parent;
-            //根节点
+            //若没有父节点，则表示为根节点，且该树只有一个根节点
             if (temp == null) {
                 node.nodeData = null;
                 return true;
             }
+
+            //与其父节点比较，判断是左子树还是右子树
             int flag = node.nodeData.compareTo(temp.nodeData);
-            if (flag < 0) {
+            if (flag <= 0) {
                 temp.left = null;
             } else {
                 temp.right = null;
@@ -86,49 +90,55 @@ public class BinarySortTree<T extends Comparable<T>> extends BinaryTree<T> {
             return true;
         }
 
+        //若左子树为空，则直接将右子树连到要删除的节点
+        //右子树为空时同理
         if (left == null) {
-            temp = node.right;
-            node.left = temp.left;
-            node.right = temp.right;
-            node.nodeData = temp.nodeData;
-
+            this.recover(node, node.right);
         } else if (right == null) {
-            temp = node.left;
-            node.left = temp.left;
-            node.right = temp.right;
-            node.nodeData = temp.nodeData;
+            this.recover(node, node.left);
         } else {
+            //左右子树均不为空时
             temp = node;
-            //右子树的最左的节点
+            //后继为右子树的最左的节点
             temp = temp.right;
+            //若右子树没有左子树,直接将右子树的根节点覆盖到当前节点
             if (temp.left == null) {
-                temp.left = node.left;
-                this.root = temp;
+                node.nodeData = temp.nodeData;
+                node.right = temp.right;
             } else {
+                //找到右子树的最左节点
                 while (temp.left != null) {
                     temp = temp.left;
                 }
+                //将最左节点的数据覆盖至删除节点
                 node.nodeData = temp.nodeData;
+                //将其父节点对最左节点的引用置为null
                 temp.parent.left = null;
             }
         }
         return true;
     }
 
+    /**
+     * 覆盖原来的节点
+     *
+     * @param oldNode
+     * @param newNode
+     */
     private void recover(BinaryTreeNode<T> oldNode, BinaryTreeNode<T> newNode) {
-        if (newNode == null) {
-            return;
-        }
         oldNode.left = newNode.left;
         oldNode.right = newNode.right;
         oldNode.nodeData = newNode.nodeData;
     }
 
+
     public static void main(String[] args) {
         BinarySortTree<Integer> bsTree = new BinarySortTree<>();
-        Integer a[] = {99, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 56, 45, 180, 17};
+        Integer a[] = {99, 10, 7, 20, 17, 30, 40, 110, 120};
         bsTree.initTree(a);
         bsTree.delete(99);
         bsTree.inOrderTraverse(bsTree.getRoot());
+        System.out.println("-------------------------------------");
+        System.out.println("root: " + bsTree.getRoot());
     }
 }

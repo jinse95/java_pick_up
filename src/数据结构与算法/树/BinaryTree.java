@@ -57,14 +57,13 @@ public class BinaryTree<T> {
     }
 
 
-
     /**
      * 遍历时对节点的操作
      *
      * @param binaryTreeNode 当前节点
      */
     protected void visit(BinaryTreeNode<T> binaryTreeNode) {
-        System.out.println(binaryTreeNode.nodeData);
+        System.out.println(binaryTreeNode);
     }
 
     public static class BinaryTreeNode<T> {
@@ -87,10 +86,10 @@ public class BinaryTree<T> {
         @Override
         public String toString() {
             return "BinaryTreeNode{" +
-                    "parent=" + parent.nodeData +
-                    ", nodeData=" + nodeData +
-                    ", left=" + left.nodeData +
-                    ", right=" + right.nodeData +
+                    "nodeData=" + nodeData +
+                    ", parent=" + (parent == null ? null : parent.nodeData) +
+                    ", left=" + (left == null ? null : left.nodeData) +
+                    ", right=" + (right == null ? null : right.nodeData) +
                     '}';
         }
     }
