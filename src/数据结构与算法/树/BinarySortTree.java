@@ -5,7 +5,7 @@ package 数据结构与算法.树;
  * @Author J
  * @Date 2018/7/5 11:46
  **/
-public class BinarySortTree<T extends Comparable<T>> extends BinaryTree<T> {
+public class BinarySortTree<T extends Comparable<? super T>> extends BinaryTree<T> {
 
     public void initTree(T[] ts) {
         for (T item : ts) {
@@ -23,14 +23,12 @@ public class BinarySortTree<T extends Comparable<T>> extends BinaryTree<T> {
                 if (t.compareTo(currentNode.nodeData) <= 0) {
                     if (currentNode.left == null) {
                         currentNode.left = node;
-                        node.parent = currentNode;
                         return;
                     }
                     currentNode = currentNode.left;
                 } else {
                     if (currentNode.right == null) {
                         currentNode.right = node;
-                        node.parent = currentNode;
                         return;
                     }
                     currentNode = currentNode.right;
@@ -62,10 +60,33 @@ public class BinarySortTree<T extends Comparable<T>> extends BinaryTree<T> {
     }
 
     public boolean delete(T t) {
-        BinaryTreeNode<T> node = this.search(t);
+        if (root == null) {
+            return false;
+        }
+        BinaryTreeNode<T> current = root;
+        BinaryTreeNode<T> node = null;
+        BinaryTreeNode<T> parent = null;
+        while (true) {
+            int flag = t.compareTo(current.nodeData);
+            if (flag == 0) {
+                node = current;
+                break;
+            } else if (flag > 0) {
+                parent = current;
+                current = current.right;
+            } else {
+                parent = current;
+                current = current.left;
+            }
+
+            if (current == null) {
+                break;
+            }
+        }
         if (node == null) {
             return false;
         }
+
         BinaryTreeNode<T> left = node.left;
         BinaryTreeNode<T> right = node.right;
         BinaryTreeNode<T> temp;
@@ -73,7 +94,7 @@ public class BinarySortTree<T extends Comparable<T>> extends BinaryTree<T> {
         //如果左子树和右子树均为null，直接删除该节点，
         // 由于java没有指针这一概念，只能把该节点的父节点对它的引用设为null
         if (left == null && right == null) {
-            temp = node.parent;
+            temp = parent;
             //若没有父节点，则表示为根节点，且该树只有一个根节点
             if (temp == null) {
                 node.nodeData = null;
@@ -108,27 +129,16 @@ public class BinarySortTree<T extends Comparable<T>> extends BinaryTree<T> {
             } else {
                 //找到右子树的最左节点
                 while (temp.left != null) {
+                    parent = temp;
                     temp = temp.left;
                 }
                 //将最左节点的数据覆盖至删除节点
                 node.nodeData = temp.nodeData;
                 //将其父节点对最左节点的引用置为null
-                temp.parent.left = null;
+                parent.left = null;
             }
         }
         return true;
-    }
-
-    /**
-     * 覆盖原来的节点
-     *
-     * @param oldNode
-     * @param newNode
-     */
-    private void recover(BinaryTreeNode<T> oldNode, BinaryTreeNode<T> newNode) {
-        oldNode.left = newNode.left;
-        oldNode.right = newNode.right;
-        oldNode.nodeData = newNode.nodeData;
     }
 
 
@@ -136,7 +146,7 @@ public class BinarySortTree<T extends Comparable<T>> extends BinaryTree<T> {
         BinarySortTree<Integer> bsTree = new BinarySortTree<>();
         Integer a[] = {99, 10, 7, 20, 17, 30, 40, 110, 120};
         bsTree.initTree(a);
-        bsTree.delete(99);
+        bsTree.delete(7);
         bsTree.inOrderTraverse(bsTree.getRoot());
         System.out.println("-------------------------------------");
         System.out.println("root: " + bsTree.getRoot());

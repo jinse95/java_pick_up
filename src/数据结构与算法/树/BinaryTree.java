@@ -66,9 +66,20 @@ public class BinaryTree<T> {
         System.out.println(binaryTreeNode);
     }
 
-    public static class BinaryTreeNode<T> {
+    /**
+     * 覆盖原来的节点
+     *
+     * @param oldNode
+     * @param newNode
+     */
+    protected void recover(BinaryTreeNode<T> oldNode, BinaryTreeNode<T> newNode) {
+        oldNode.left = newNode.left;
+        oldNode.right = newNode.right;
+        oldNode.nodeData = newNode.nodeData;
+    }
 
-        BinaryTreeNode<T> parent;
+
+    public static class BinaryTreeNode<T> {
 
         T nodeData;
 
@@ -87,7 +98,6 @@ public class BinaryTree<T> {
         public String toString() {
             return "BinaryTreeNode{" +
                     "nodeData=" + nodeData +
-                    ", parent=" + (parent == null ? null : parent.nodeData) +
                     ", left=" + (left == null ? null : left.nodeData) +
                     ", right=" + (right == null ? null : right.nodeData) +
                     '}';
