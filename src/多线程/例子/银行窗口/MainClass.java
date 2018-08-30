@@ -46,7 +46,7 @@ public class MainClass {
         thread4.setName("窗口4");
 
         Window window5 = new Window("窗口5", false, consumerQueue);
-        Thread thread5 = new Thread(window4);
+        Thread thread5 = new Thread(window5);
         thread5.setName("窗口5");
 
         vip1.start();
