@@ -15,8 +15,12 @@ public class SyncBlockQueue {
 
     int count;
 
+    /**
+     * 入队
+     */
     public synchronized void put(Object o) {
         while (count == objectArray.length) {
+            System.out.println("满了");
             try {
                 this.wait();
             } catch (InterruptedException e) {
@@ -29,8 +33,12 @@ public class SyncBlockQueue {
         this.notify();
     }
 
+    /**
+     * 出队
+     */
     public synchronized Object take() {
         while (count == 0) {
+            System.out.println("空了");
             try {
                 this.wait();
             } catch (InterruptedException e) {
