@@ -47,11 +47,28 @@ public class _199_二叉树的右视图 {
 }
 
 class TreeNode {
+
     int val;
     TreeNode left;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TreeNode treeNode = (TreeNode) o;
+        return val == treeNode.val;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(val);
+    }
+
     TreeNode right;
 
     TreeNode(int x) {
         val = x;
     }
+
+
 }
