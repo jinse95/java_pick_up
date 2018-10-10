@@ -12,7 +12,7 @@ public class RunnableImpl implements Runnable {
             System.out.println("线程号 - " + Thread.currentThread().getId() + "开始");
             synchronized (this){
                 System.out.println("线程号 - " + Thread.currentThread().getId() + "锁住");
-                Thread.sleep(6000L);
+                Thread.sleep(10000L);
                 System.out.println("线程号 - " + Thread.currentThread().getId() + "   " + Thread.currentThread().getName());
             }
         } catch (InterruptedException e) {

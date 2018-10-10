@@ -1,5 +1,7 @@
 package leetcode;
 
+import leetcode.entity.TreeNode;
+
 import java.util.*;
 
 /**
@@ -19,10 +21,10 @@ public class _863_二叉树中所有距离为K的结点 {
             int count = nodeQueue.size();
             while (count-- > 0) {
                 TreeNode temp = nodeQueue.poll();
-                if (temp.left != null&& parentMap.containsKey(temp.left)) {
+                if (temp.left != null && parentMap.containsKey(temp.left)) {
                     nodeQueue.add(temp.left);
                 }
-                if (temp.right != null&& parentMap.containsKey(temp.right)) {
+                if (temp.right != null && parentMap.containsKey(temp.right)) {
                     nodeQueue.add(temp.right);
                 }
                 temp = parentMap.remove(temp);
@@ -60,42 +62,9 @@ public class _863_二叉树中所有距离为K的结点 {
         }
     }
 
-    public static TreeNode initTree(int[] array) {
-        TreeNode root = new TreeNode(array[0]);
-        Queue<TreeNode> pQ = new LinkedList<>();
-        pQ.add(root);
-
-        for (int i = 1; i < array.length; i++) {
-            while (!pQ.isEmpty()) {
-                TreeNode temp = pQ.poll();
-
-                int val = array[i++];
-                if (val == -1) {
-                    temp.left = null;
-                } else {
-                    temp.left = new TreeNode(val);
-                    pQ.add(temp.left);
-                }
-                if (i >= array.length) {
-                    break;
-                }
-                val = array[i++];
-                if (val == -1) {
-                    temp.right = null;
-                } else {
-                    temp.right = new TreeNode(val);
-                    pQ.add(temp.right);
-                }
-                if (i >= array.length) {
-                    break;
-                }
-            }
-        }
-        return root;
-    }
 
     public static void main(String[] args) {
-        TreeNode root = initTree(new int[]{3, 5, 1, 6, 2, 0, 8, -1, -1, 7, 4});
+        TreeNode root = TreeNode.initTree(new int[]{3, 5, 1, 6, 2, 0, 8, -1, -1, 7, 4});
         System.out.println("=====init");
 
         List<Integer> result = distanceK(root, new TreeNode(5), 2);

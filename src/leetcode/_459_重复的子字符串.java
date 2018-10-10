@@ -6,6 +6,7 @@ package leetcode;
  * @description
  **/
 public class _459_重复的子字符串 {
+
     public static boolean repeatedSubstringPattern(String s) {
         int len = s.length();
         int len1 = len / 2;

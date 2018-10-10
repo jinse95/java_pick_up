@@ -17,8 +17,10 @@ public class MainClass {
         thread.setName("bbb");
         Thread thread3 = new Thread(runnable);
         thread.setName("ccc");
+
         thread.start();
         thread2.start();
+        thread2.interrupt();
         thread3.start();
 
     }

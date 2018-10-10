@@ -21,6 +21,7 @@ public class QuickSortArray2 {
             }
             array[high] = array[low];
         }
+        //此时low = high
         array[low] = key;
         return low;
     }

@@ -12,11 +12,11 @@ import java.util.concurrent.locks.ReentrantLock;
 public class TTT {
     public static void main(String[] args) {
 
-//        Thread i0 = new Thread(new RunIt3());
+        Thread i0 = new Thread(new RunIt3());
         Thread i1 = new Thread(new RunIt3());
-//        i0.start();
+        i0.start();
         i1.start();
-        i1.interrupt();
+
     }
 
 }
@@ -35,8 +35,8 @@ class RunIt3 implements Runnable {
             System.out.println("state1: " + Thread.currentThread().getState());
             System.out.println(Thread.currentThread().getName() + " running");
             TimeUnit.SECONDS.sleep(5);
-            lock.unlock();
             System.out.println(Thread.currentThread().getName() + " finished");
+            lock.unlock();
         } catch (InterruptedException e) {
             System.out.println("Exstate: " + Thread.currentThread().getState());
 
