@@ -46,6 +46,36 @@ public class _213_打家劫舍 {
         return sum;
     }
 
+
+    /**
+     * 198 打家劫舍
+     * f(n) = max( f(n-2) + nums[2] , f(n-1) )
+     * @param nums
+     * @return
+     */
+    public int rob198(int[] nums) {
+        int len = nums.length;
+        if(len == 0){
+            return 0;
+        }
+        if(len == 1){
+            return nums[0];
+        }
+        if(len == 2){
+            return Math.max(nums[0],nums[1]);
+        }
+
+        int sum = Math.max(nums[0],nums[1]);
+        int beforeSum = nums[0];
+
+        for (int i = 2; i < len; i++) {
+            int tmp = sum;
+            sum = Math.max(beforeSum + nums[i], sum);
+            beforeSum = tmp;
+        }
+        return sum;
+    }
+
     public static void main(String[] args) {
         int[] a = new int[]{1, 100};
         System.out.println(rob(a));
