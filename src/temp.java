@@ -1,3 +1,4 @@
+import java.lang.reflect.Field;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -7,16 +8,39 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  **/
 public class temp {
 
-    public static void main(String[] args) {
+    public static void printHeadAndTail(ConcurrentLinkedQueue<Integer> queue, Field[] fields, Field[] nodeFields) throws ClassNotFoundException, IllegalAccessException {
+
+        for (Field item : fields) {
+            if ("head".equals(item.getName()) || "tail".equals(item.getName())) {
+                System.out.printf(item.getName());
+                for (Field itemNode : nodeFields) {
+                    String nodeItemName = itemNode.getName();
+                    if ("item".equals(nodeItemName)) {
+                        System.out.println(" item-----" + itemNode.get(item.get(queue)));
+                    }
+                }
+            }
+        }
+        System.out.println("===========");
+    }
+
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException {
 
         ConcurrentLinkedQueue<Integer> queue = new ConcurrentLinkedQueue<>();
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        System.out.println("-------");
-        queue.poll();
-        queue.poll();
-        System.out.println("-------------");
+        Field[] fields = ConcurrentLinkedQueue.class.getDeclaredFields();
+        for (Field item : fields) {
+            item.setAccessible(true);
+        }
+        Field[] nodeFields = Class.forName("java.util.concurrent.ConcurrentLinkedQueue$Node").getDeclaredFields();
+        for (Field item : nodeFields) {
+            item.setAccessible(true);
+        }
+
+        for (int i = 1; i <= 4; i++) {
+            if (queue.add(i)){
+                printHeadAndTail(queue, fields, nodeFields);
+            }
+        }
     }
 }
 
