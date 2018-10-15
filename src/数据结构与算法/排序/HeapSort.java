@@ -18,11 +18,16 @@ public class HeapSort {
 
         for (int i = len - 1; i > 0; i--) {
             BaseUtils.swap(array, i, 0);
-
             heapAdjust(array, 0, i - 1);
         }
     }
 
+    /**
+     * 调整大顶堆
+     * @param array
+     * @param start
+     * @param end
+     */
     public static void heapAdjust(int[] array, int start, int end) {
         //父节点
         int parent = array[start];
