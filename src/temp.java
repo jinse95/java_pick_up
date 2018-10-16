@@ -9,7 +9,6 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class temp {
 
     public static void printHeadAndTail(ConcurrentLinkedQueue<Integer> queue, Field[] fields, Field[] nodeFields) throws ClassNotFoundException, IllegalAccessException {
-
         for (Field item : fields) {
             if ("head".equals(item.getName()) || "tail".equals(item.getName())) {
                 System.out.printf(item.getName());
@@ -24,7 +23,7 @@ public class temp {
         System.out.println("===========");
     }
 
-    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException {
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InterruptedException {
 
         ConcurrentLinkedQueue<Integer> queue = new ConcurrentLinkedQueue<>();
         Field[] fields = ConcurrentLinkedQueue.class.getDeclaredFields();
@@ -37,8 +36,9 @@ public class temp {
         }
 
         for (int i = 1; i <= 4; i++) {
-            if (queue.add(i)){
+            if (queue.add(i)) {
                 printHeadAndTail(queue, fields, nodeFields);
+                Thread.sleep(1500);
             }
         }
     }

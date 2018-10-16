@@ -16,14 +16,12 @@ public class _102_二叉树层次遍历 {
      * @param root
      * @return
      */
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public static List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> list = new ArrayList<>();
         if (root == null) {
             return list;
         }
         Queue<TreeNode> queue = new LinkedList<>();
-        Stack stack = new Stack();
-        stack.si
         queue.offer(root);
         while (true) {
             int count = queue.size();
@@ -47,52 +45,60 @@ public class _102_二叉树层次遍历 {
 
 
     /**
-     * 103
-     *
-     * @param root
-     * @return 输入
-     * [1,2,3,4,null,null,5]
-     * 输出
-     * [[1],[3,2],[5,4]]
-     * 预期结果
-     * [[1],[3,2],[4,5]]
+     * 103 锯齿输出   双端队列
      */
-    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+    public static List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> list = new ArrayList<>();
         if (root == null) {
             return list;
         }
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
+        Deque<TreeNode> queue = new LinkedList<>();
+        queue.addFirst(root);
         int i = 0;
         while (true) {
             int count = queue.size();
             List<Integer> innerList = new ArrayList<>(count);
             i++;
-            while (count-- > 0) {
-                TreeNode item = queue.poll();
-                innerList.add(item.val);
-                if (i % 2 == 1) {
+            if (i % 2 == 0) {
+                while (count-- > 0) {
+                    TreeNode item = queue.pollFirst();
+                    innerList.add(item.val);
                     if (item.right != null) {
-                        queue.offer(item.right);
+                        queue.addLast(item.right);
                     }
+
                     if (item.left != null) {
-                        queue.offer(item.left);
-                    }
-                } else {
-                    if (item.left != null) {
-                        queue.offer(item.left);
-                    }
-                    if (item.right != null) {
-                        queue.offer(item.right);
+                        queue.addLast(item.left);
                     }
                 }
-
+            } else {
+                while (count-- > 0) {
+                    TreeNode item = queue.pollLast();
+                    innerList.add(item.val);
+                    if (item.left != null) {
+                        queue.addFirst(item.left);
+                    }
+                    if (item.right != null) {
+                        queue.addFirst(item.right);
+                    }
+                }
             }
+
             list.add(innerList);
             if (queue.isEmpty()) {
                 return list;
             }
+        }
+    }
+
+    public static void main(String[] args) {
+        TreeNode root = TreeNode.initTree(new int[]{1, 2, 3, 4, -1, -1, 5, 6, -1, -1, 7});
+        List<List<Integer>> list = zigzagLevelOrder(root);
+        for (List<Integer> itemList : list) {
+            for (Integer item : itemList) {
+                System.out.print(item + ", ");
+            }
+            System.out.println();
         }
     }
 }
