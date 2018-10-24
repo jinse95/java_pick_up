@@ -45,7 +45,7 @@ public class _373_查找和最小的K对数字 {
         List<int[]> kNum = new ArrayList<>();
         while (k > 0) {
             int i = 0, j = 0;
-            while (i < len1 && j < lenK2 && ) {
+            while (i < len1 && j < lenK2) {
                 k--;
                 kNum.add(new int[]{nums1[i], nums2[j]});
                 //todo
