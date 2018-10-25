@@ -15,7 +15,7 @@ public class ProxyTest {
         eat.eatFood("米饭");
 
         Eat eat1 = new Man();
-        InvocationHandler handler = new EatDynamicProxy(eat1);
+        InvocationHandler handler = new DynamicProxy(eat1);
         Eat eat2 = (Eat) Proxy.newProxyInstance(Eat.class.getClassLoader(), new Class[]{Eat.class}, handler);
         eat2.eatFood("面");
     }

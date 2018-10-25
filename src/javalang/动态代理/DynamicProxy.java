@@ -8,12 +8,12 @@ import java.lang.reflect.Method;
  * @time 2018/10/24 22:36
  * @description
  **/
-public class EatDynamicProxy implements InvocationHandler {
+public class DynamicProxy implements InvocationHandler {
 
     //　这个就是我们要代理的真实对象
     private Object subject;
 
-    public EatDynamicProxy(Object subject) {
+    public DynamicProxy(Object subject) {
         this.subject = subject;
     }
 
