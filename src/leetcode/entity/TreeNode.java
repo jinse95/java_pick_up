@@ -6,7 +6,7 @@ import java.util.Queue;
 
 /**
  * @Description
- * @Author J
+ * @author J
  * @Date 2018/10/10 16:41
  **/
 public class TreeNode {

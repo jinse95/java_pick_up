@@ -2,7 +2,7 @@ package 多线程.例子.简单队列;
 
 /**
  * @Description
- * @Author J
+ * @author J
  * @Date 2018/8/30 17:37
  **/
 public class SyncBlockQueue {

@@ -2,7 +2,7 @@ package 多线程.基本特性;
 
 /**
  * @Description
- * @Author J
+ * @author J
  * @Date 2018/8/31 15:02
  **/
 public class JoinTest {

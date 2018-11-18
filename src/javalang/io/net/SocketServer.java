@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * @Author J
+ * @author J
  * @Date 2018/11/16 11:32
  * @Description
  **/

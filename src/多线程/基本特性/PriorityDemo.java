@@ -2,7 +2,7 @@ package 多线程.基本特性;
 
 /**
  * @Description 优先级demo
- * @Author J
+ * @author J
  * @Date 2018/5/25 10:36
  **/
 public class PriorityDemo {

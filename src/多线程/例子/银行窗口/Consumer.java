@@ -2,7 +2,7 @@ package 多线程.例子.银行窗口;
 
 /**
  * @Description
- * @Author J
+ * @author J
  * @Date 2018/6/19 16:59
  **/
 public class Consumer {

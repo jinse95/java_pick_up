@@ -6,7 +6,7 @@ import java.util.*;
 
 /**
  * @Description 考察二叉树按层次遍历
- * @Author J
+ * @author J
  * @Date 2018/9/29 16:40
  **/
 public class _199_二叉树的右视图 {

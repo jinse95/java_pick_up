@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 /**
  * @Description 朴素贝叶斯
- * @Author J
+ * @author J
  * @Date 2018/7/11 14:32
  **/
 public class NaiveBayes {

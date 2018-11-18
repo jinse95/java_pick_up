@@ -1,7 +1,7 @@
 package javalang.base;
 
 /**
- * @Author J
+ * @author J
  * @Date 2018/10/24 11:48
  * @Description
  **/

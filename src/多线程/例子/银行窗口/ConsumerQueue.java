@@ -2,7 +2,7 @@ package 多线程.例子.银行窗口;
 
 /**
  * @Description 客户队列  记录头尾引用的双向链表
- * @Author J
+ * @author J
  * @Date 2018/6/19 15:33
  **/
 public class ConsumerQueue {

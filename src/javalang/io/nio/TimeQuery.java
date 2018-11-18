@@ -45,10 +45,10 @@ public class TimeQuery {
             dbuf.clear();
             sc.read(dbuf);
 
-            // Print the remote address and the received time
+            // 将指针移到开头
             dbuf.flip();
             CharBuffer cb = decoder.decode(dbuf);
-            System.out.print(isa + " : " + cb);
+            System.out.print("from " + isa + " : " + cb);
 
         } finally {
             // Make sure we close the channel (and hence the socket)

@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  * @Description
- * @Author J
+ * @author J
  * @Date 2018/7/10 15:34
  **/
 public class KMeansIris {

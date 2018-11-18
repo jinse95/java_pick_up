@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 /**
  * @Description AVL树
- * @Author J
+ * @author J
  * @Date 2018/7/24 14:50
  **/
 public class AVLTree<T extends Comparable<? super T>> {

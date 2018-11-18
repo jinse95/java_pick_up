@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * @Description 插入排序
- * @Author J
+ * @author J
  * @Date 2018/10/16 16:27
  **/
 public class InsertSort {

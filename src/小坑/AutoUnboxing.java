@@ -3,7 +3,7 @@ package 小坑;
 /**
  * @Description 自动拆箱小坑
  * 三元运算符的自动拆箱问题
- * @Author J
+ * @author J
  * @Date 2018/7/11 11:24
  **/
 public class AutoUnboxing {

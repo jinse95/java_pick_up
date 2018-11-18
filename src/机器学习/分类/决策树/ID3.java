@@ -5,7 +5,7 @@ import java.util.*;
 
 /**
  * @Description
- * @Author J
+ * @author J
  * @Date 2018/7/12 17:12
  **/
 public class ID3 {

@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  * @Description
- * @Author J
+ * @author J
  * @Date 2018/6/19 16:51
  **/
 public class MainClass {

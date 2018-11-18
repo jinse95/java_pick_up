@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 /**
  * @Description 选择排序
- * @Author J
+ * @author J
  * @Date 2018/10/16 13:08
  **/
 public class SelectSort {

@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  * @Description
- * @Author J
+ * @author J
  * @Date 2018/8/30 17:38
  **/
 public class TestQueue {

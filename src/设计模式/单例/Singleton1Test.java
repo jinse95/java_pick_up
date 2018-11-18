@@ -2,7 +2,7 @@ package 设计模式.单例;
 
 /**
  * @Description
- * @Author J
+ * @author J
  * @Date 2018/6/7 17:56
  **/
 public class Singleton1Test {

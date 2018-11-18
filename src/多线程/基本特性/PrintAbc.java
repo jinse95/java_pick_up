@@ -2,7 +2,7 @@ package 多线程.基本特性;
 
 /**
  * @Description 交替打印ABC
- * @Author J
+ * @author J
  * @Date 2018/5/28 10:36
  **/
 public class PrintAbc {

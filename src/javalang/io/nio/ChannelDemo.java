@@ -9,7 +9,7 @@ import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
 
 /**
- * @Author J
+ * @author J
  * @Date 2018/11/16 13:50
  * @Description
  **/

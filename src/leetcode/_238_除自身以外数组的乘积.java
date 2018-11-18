@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * @Author J
+ * @author J
  * @Date 2018/10/22 13:08
  * @Description
  **/

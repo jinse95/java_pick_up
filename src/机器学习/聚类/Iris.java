@@ -2,7 +2,7 @@ package 机器学习.聚类;
 
 /**
  * @Description 鸢尾花实体
- * @Author J
+ * @author J
  * @Date 2018/7/10 15:34
  **/
 public class Iris {

@@ -2,7 +2,7 @@ package leetcode;
 
 /**
  * @Description 动态规划问题
- * @Author J
+ * @author J
  * @Date 2018/9/30 14:54
  **/
 public class _213_打家劫舍 {

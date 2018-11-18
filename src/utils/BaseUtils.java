@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * @Description 基础工具类
- * @Author J
+ * @author J
  * @Date 2018/10/9 8:41
  **/
 public class BaseUtils {

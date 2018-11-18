@@ -2,7 +2,7 @@ package 设计模式.单例;
 
 /**
  * @Description 该单例模式实例在类初始化的时候被创建
- * @Author J
+ * @author J
  * @Date 2018/6/7 17:54
  **/
 public class Singleton1 {

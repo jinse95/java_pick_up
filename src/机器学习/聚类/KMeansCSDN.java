@@ -6,7 +6,7 @@ import java.util.Vector;
 
 /**
  * @Description
- * @Author J
+ * @author J
  * @Date 2018/7/9 15:05
  * <a href="https://blog.csdn.net/qq_24369113/article/details/53176822"/>
  **/

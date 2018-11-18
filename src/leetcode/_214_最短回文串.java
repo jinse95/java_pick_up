@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * @Author J
+ * @author J
  * @Date 2018/10/17 13:44
  * @Description
  * todo  kmp 优化

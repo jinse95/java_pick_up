@@ -6,7 +6,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Description
- * @Author J
+ * @author J
  * @Date 2018/8/28 15:40
  **/
 public class TTT {
