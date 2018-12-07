@@ -12,11 +12,11 @@ import java.util.concurrent.TimeUnit;
 public class TestPool {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ThreadPoolExecutor executor = new ThreadPoolExecutor(7, 7, 1, TimeUnit.HOURS
-                , new ArrayBlockingQueue<>(20));
+                , new ArrayBlockingQueue<>(1));
 //        String[] seArray = {"1", "2"};
-        String[] seArray = new String[20];
+        String[] seArray = new String[3];
         int len = seArray.length;
 //        for (String seItem : seArray) {
 //            ClickTask clickTask = new ClickTask(seItem);
@@ -33,10 +33,15 @@ public class TestPool {
 
 
         while (true) {
+            Thread.sleep(1000L);
             if (ClickTask.getCounter() == len) {
                 System.out.println("ok");
                 break;
-            }
+            } /*else {
+                System.out.println("wait ok");
+            }*/
         }
+        executor.shutdown();
+        System.out.println("finish");
     }
 }
