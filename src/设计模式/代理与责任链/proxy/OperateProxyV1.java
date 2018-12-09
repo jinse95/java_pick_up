@@ -12,11 +12,11 @@ import java.lang.reflect.Proxy;
  *
  * @author J
  **/
-public class OperateProxy implements InvocationHandler {
+public class OperateProxyV1 implements InvocationHandler {
 
     private Operate operate;
 
-    public OperateProxy(Operate operate) {
+    public OperateProxyV1(Operate operate) {
         this.operate = operate;
     }
 
@@ -32,7 +32,7 @@ public class OperateProxy implements InvocationHandler {
 
     public static void main(String[] args) {
         Operate operate = new OperateImpl();
-        operate = (Operate) Proxy.newProxyInstance(Operate.class.getClassLoader(), new Class[]{Operate.class}, new OperateProxy(operate));
+        operate = (Operate) Proxy.newProxyInstance(Operate.class.getClassLoader(), new Class[]{Operate.class}, new OperateProxyV1(operate));
         operate.doSelect();
     }
 }

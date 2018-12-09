@@ -1,5 +1,6 @@
 package 设计模式.代理与责任链.proxy;
 
+import 设计模式.代理与责任链.InterceptorV1;
 import 设计模式.代理与责任链.Operate;
 import 设计模式.代理与责任链.OperateImpl;
 
@@ -12,31 +13,34 @@ import java.lang.reflect.Proxy;
  *
  * @author J
  **/
-public class OperateProxyV2 implements InvocationHandler {
+public class OperateProxyV3 implements InvocationHandler {
 
     private Operate operateProxy;
 
-    public OperateProxyV2(Operate operate) {
-        this.operateProxy = operate;
+    private InterceptorV1 interceptor;
+
+    public OperateProxyV3(Operate operateProxy, InterceptorV1 interceptor) {
+        this.operateProxy = operateProxy;
+        this.interceptor = interceptor;
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("操作前");
+        interceptor.before();
         Object o;
         //注意 这是个可变参数方法
         o = method.invoke(operateProxy, args);
-        System.out.println("操作后");
+        interceptor.after();
         return o;
     }
 
-    public static Operate proxy(Operate op) {
-        return (Operate) Proxy.newProxyInstance(Operate.class.getClassLoader(), new Class[]{Operate.class}, new OperateProxyV2(op));
+    public static Operate proxy(Operate op, InterceptorV1 interceptor) {
+        return (Operate) Proxy.newProxyInstance(Operate.class.getClassLoader(), new Class[]{Operate.class}, new OperateProxyV3(op, interceptor));
     }
 
     public static void main(String[] args) {
         Operate operate = new OperateImpl();
-        operate = OperateProxyV2.proxy(operate);
+        operate = OperateProxyV3.proxy(operate, new Interceptor1());
         operate.doSelect();
     }
 }
