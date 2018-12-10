@@ -1,7 +1,7 @@
-package 设计模式.代理与责任链.proxy0;
+package 设计模式.代理与责任链.proxy;
 
-import 设计模式.代理与责任链.interceptor.InterceptorV3;
 import 设计模式.代理与责任链.Operate;
+import 设计模式.代理与责任链.interceptor.InterceptorV3;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +11,15 @@ import java.util.List;
  *
  * @author J
  **/
-public class ChainManagerV2 {
+public class ChainManagerV3 {
 
     private List<InterceptorV3> interceptorList;
 
-    public ChainManagerV2() {
+    public ChainManagerV3() {
         interceptorList = new ArrayList<>();
     }
 
-    public ChainManagerV2(List<InterceptorV3> interceptorList) {
+    public ChainManagerV3(List<InterceptorV3> interceptorList) {
         this.interceptorList = interceptorList;
     }
 
