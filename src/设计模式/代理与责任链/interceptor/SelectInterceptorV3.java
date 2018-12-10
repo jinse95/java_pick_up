@@ -1,4 +1,6 @@
-package 设计模式.代理与责任链;
+package 设计模式.代理与责任链.interceptor;
+
+import 设计模式.代理与责任链.Invocation;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.UndeclaredThrowableException;
@@ -8,7 +10,7 @@ import java.lang.reflect.UndeclaredThrowableException;
  *
  * @author J
  **/
-public class SelectInterceptor implements InterceptorV2 {
+public class SelectInterceptorV3 implements InterceptorV3 {
 
 
     @Override

@@ -1,6 +1,6 @@
-package 设计模式.代理与责任链;
+package 设计模式.代理与责任链.interceptor;
 
-import 设计模式.代理与责任链.proxy.OperateProxyV4;
+import 设计模式.代理与责任链.Invocation;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.UndeclaredThrowableException;
@@ -10,12 +10,10 @@ import java.lang.reflect.UndeclaredThrowableException;
  *
  * @author J
  **/
-public interface InterceptorV2 {
+public interface InterceptorV3 {
     Object before(Invocation invocation) throws InvocationTargetException, IllegalAccessException, UndeclaredThrowableException;
 
-    Object after(Invocation invocation, Object result);
-
-    default Operate register(Operate target) {
-        return OperateProxyV4.proxy(target, this);
+    default Object after(Invocation invocation, Object result) {
+        return result;
     }
 }

@@ -2,7 +2,6 @@ package 设计模式.代理与责任链;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.UndeclaredThrowableException;
 
 /**
  * created on 2018/12/9
@@ -33,7 +32,7 @@ public class Invocation {
         return args;
     }
 
-    public Object proceed() throws InvocationTargetException, IllegalAccessException, UndeclaredThrowableException {
+    public Object proceed() throws InvocationTargetException, IllegalAccessException {
         return method.invoke(target, args);
     }
 

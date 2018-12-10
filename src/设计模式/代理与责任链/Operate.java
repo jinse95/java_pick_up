@@ -14,6 +14,4 @@ public interface Operate {
     void doUpdate();
 
     void doSelect();
-
-
 }
