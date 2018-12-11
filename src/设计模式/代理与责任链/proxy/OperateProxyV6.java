@@ -1,4 +1,4 @@
-package 设计模式.代理与责任链.proxy0;
+package 设计模式.代理与责任链.proxy;
 
 import 设计模式.代理与责任链.Invocation;
 import 设计模式.代理与责任链.Operate;
@@ -47,7 +47,7 @@ public class OperateProxyV6 implements InvocationHandler {
         List<InterceptorV3> v2List = new ArrayList<>();
         v2List.add(new SelectInterceptorV3());
         v2List.add(new LogInterceptorV3());
-        ChainManagerV2 chainManager = new ChainManagerV2(v2List);
+        ChainManagerV3 chainManager = new ChainManagerV3(v2List);
         operate = chainManager.chain(operate);
 
         operate.doDelete();
