@@ -27,6 +27,7 @@ public class ShopDiscountStrategy implements DiscountStrategy {
         if (!(amount.compareTo(low) >= 0 && amount.compareTo(high) < 0)) {
             return amount;
         }
-
+        //todo
+        return amount;
     }
 }
