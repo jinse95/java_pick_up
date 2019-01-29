@@ -41,7 +41,8 @@ class InitTimeParent {
 class InitTime extends InitTimeParent {
     /**
      * 类初始化的时机
-     * 1. 遇到new、getstatic、putstatic或invokestatic这4条字节码指令时，如果类没有进行过初始化，则需要先触发其初始化。`生成这4条指令的最常见的Java代码场景是：
+     * 1. 遇到new、getstatic、putstatic或invokestatic这4条字节码指令时，如果类没有进行过初始化，则需要先触发其初始化。
+     * ~  生成这4条指令的最常见的Java代码场景是：
      * 1.1  使用new关键字实例化对象的时候、
      * 1.2  读取或设置一个类的静态字段（被final修饰、已在编译期把结果放入常量池的静态字段除外）的时候，
      * 1.3  以及调用一个类的静态方法的时候。
@@ -86,8 +87,7 @@ public class ReferenceSelf {
         //输出 parent Class <init> 先触发父类的初始化
         //输出 <init>
         //输出 2 (因为此处会触发初始化)
-        System.out.println(InitTime.n
-                .2);
+        System.out.println(InitTime.n2);
         //输出 static Method (由于前面输出2已经触发了初始化)
         InitTime.staticMethod();
     }
