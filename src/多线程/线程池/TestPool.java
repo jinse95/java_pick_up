@@ -1,5 +1,7 @@
 package 多线程.线程池;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -13,8 +15,12 @@ public class TestPool {
 
 
     public static void main(String[] args) throws InterruptedException {
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(7, 7, 1, TimeUnit.HOURS
-                , new ArrayBlockingQueue<>(1));
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(7, 7,
+                60, TimeUnit.SECONDS,
+                new ArrayBlockingQueue<>(1),
+                new ThreadFactoryBuilder().setNameFormat("demo-pool-%d").build(),
+                new ThreadPoolExecutor.AbortPolicy()
+        );
 //        String[] seArray = {"1", "2"};
         String[] seArray = new String[3];
         int len = seArray.length;
