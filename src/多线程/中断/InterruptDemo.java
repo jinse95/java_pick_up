@@ -2,7 +2,7 @@ package 多线程.中断;
 
 /**
  * created on 2019/1/29.
- *
+ * <a href="https://www.cnblogs.com/jenkov/p/juc_interrupt.html" />
  * @author J
  **/
 public class InterruptDemo extends Thread {
@@ -54,6 +54,7 @@ public class InterruptDemo extends Thread {
         System.exit(0);
     }
 
+    @Override
     public void run() {
         while (!stop) {
             System.out.println("Thread running...");

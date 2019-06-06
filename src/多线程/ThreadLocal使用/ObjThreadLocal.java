@@ -23,24 +23,19 @@ public class ObjThreadLocal {
         int len = 60000;
         CountDownLatch countDownLatch = new CountDownLatch(len);
         for (int i = 0; i < len; i++) {
-            executor.execute(new Runnable() {
-
-                @Override
-                public void run() {
-                    User user = new User();
-                    user.setName(new String("名字"+ RandomUtils.nextInt()));
-                    ThreadLocalBox box = new ThreadLocalBox().setUser(user);
-                    countDownLatch.countDown();
-                    try {
-                        Thread.sleep(2);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    //若 不去 remove 可能导致内存泄漏
-                    box.removeThreadLocal();
+            executor.execute(() -> {
+                User user = new User();
+                user.setName(new String("名字"+ RandomUtils.nextInt()));
+                ThreadLocalBox box = new ThreadLocalBox().setUser(user);
+                countDownLatch.countDown();
+                try {
+                    Thread.sleep(2);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
 
+                //若 不去 remove 可能导致内存泄漏
+                box.removeThreadLocal();
             });
         }
 
