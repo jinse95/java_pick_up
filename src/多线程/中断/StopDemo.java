@@ -28,6 +28,7 @@ public class StopDemo {
                         // 重新设置线程中断状态
                         Thread.currentThread().interrupt();
                     }
+                    System.out.println();
                 }
                 // 执行到此处说明线程马上终止
                 started = false;
