@@ -28,7 +28,9 @@ public class RequestProcessor implements Runnable {
     }
     this.rootDirectory = rootDirectory;
 
-    if (indexFileName != null) this.indexFileName = indexFileName;
+    if (indexFileName != null) {
+        this.indexFileName = indexFileName;
+    }
     this.connection = connection;
   }
   
@@ -49,7 +51,9 @@ public class RequestProcessor implements Runnable {
       StringBuilder requestLine = new StringBuilder();
       while (true) {
         int c = in.read();
-        if (c == '\r' || c == '\n') break;
+        if (c == '\r' || c == '\n') {
+            break;
+        }
         requestLine.append((char) c);
       }
       
@@ -62,7 +66,9 @@ public class RequestProcessor implements Runnable {
       String version = "";
       if (method.equals("GET")) {
         String fileName = tokens[1];
-        if (fileName.endsWith("/")) fileName += indexFileName;
+        if (fileName.endsWith("/")) {
+            fileName += indexFileName;
+        }
         String contentType = 
             URLConnection.getFileNameMap().getContentTypeFor(fileName);
         if (tokens.length > 2) {
@@ -76,7 +82,8 @@ public class RequestProcessor implements Runnable {
             // Don't let clients outside the document root
             && theFile.getCanonicalPath().startsWith(root)) {
           byte[] theData = Files.readAllBytes(theFile.toPath());
-          if (version.startsWith("HTTP/")) { // send a MIME header
+          if (version.startsWith("HTTP/")) {
+              // send a MIME header
             sendHeader(out, "HTTP/1.0 200 OK", contentType, theData.length);
           } 
       
@@ -92,7 +99,8 @@ public class RequestProcessor implements Runnable {
               .append("<BODY>")
               .append("<H1>HTTP Error 404: File Not Found</H1>\r\n")
               .append("</BODY></HTML>\r\n").toString();
-          if (version.startsWith("HTTP/")) { // send a MIME header
+          if (version.startsWith("HTTP/")) {
+              // send a MIME header
             sendHeader(out, "HTTP/1.0 404 File Not Found", 
                 "text/html; charset=utf-8", body.length());
           } 
