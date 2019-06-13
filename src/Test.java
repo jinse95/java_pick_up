@@ -1,7 +1,3 @@
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateFormatUtils;
-import org.apache.commons.lang3.time.DateUtils;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.ByteBuffer;
@@ -16,7 +12,6 @@ import java.util.stream.Collectors;
  * @author J
  **/
 public class Test {
-
 
 
     String name = "name";
@@ -42,5 +37,8 @@ public class Test {
 
 
         System.out.println(contentStr.replace("null",""));
+        System.out.println(new Test().member.name);
+        Object a = 1;
     }
 }
+

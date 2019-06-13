@@ -13,7 +13,7 @@ class Price {
      * 2. 验证  验证加载的内容是否符合虚拟机规范(这部分一般不需要了解)
      * 3. 准备: 为类变量分配内存并设置类变量初始值(“通常情况” 下初始值是零值，引用类型为null)
      * ~        同时被final和static修饰的字段具有ConstantValue属性,在准备阶段被赋值为ConstantValue，仅限于基本类型和String
-     * 4. 解析: 将常量池的符号引用替换为直接引用
+     * 4. 解析: 将常量池的符号引用替换为直接引用 (符号可以是任何形式的字面量,只要能无歧义地定位目标,直接引用是直接指向目标的指针、相对偏移量或者句柄)
      * 5. 初始化: 给类变量赋值,执行static代码块,(父类优先于子类,按源文件中的语句顺序执行)
      */
 
@@ -35,6 +35,14 @@ class InitTimeParent {
      */
     static {
         System.out.println("parent Class <init>");
+    }
+
+    public InitTimeParent() {
+        System.out.println("parent construct");
+    }
+
+    {
+        System.out.println("parent normal block");
     }
 }
 
@@ -60,8 +68,16 @@ class InitTime extends InitTimeParent {
         System.out.println("<init>");
     }
 
+    {
+        System.out.println("normal block");
+    }
+
     public static void staticMethod() {
         System.out.println("static Method");
+    }
+
+    public InitTime() {
+        System.out.println("construct");
     }
 }
 
@@ -79,7 +95,7 @@ public class ReferenceSelf {
         System.out.println(Price.P.currentPrice);
 
         System.out.println();
-        System.out.println("====================");
+        System.out.println("========分隔线君============");
         System.out.println();
 
         //输出 1
@@ -90,6 +106,8 @@ public class ReferenceSelf {
         System.out.println(InitTime.n2);
         //输出 static Method (由于前面输出2已经触发了初始化)
         InitTime.staticMethod();
+
+        InitTime initTime = new InitTime();
     }
 
 }
