@@ -133,7 +133,9 @@ public class SingleFileHTTPServer {
         int port;
         try {
             port = Integer.parseInt(args[1]);
-            if (port < 1 || port > 65535) port = 800;
+            if (port < 1 || port > 65535) {
+                port = 800;
+            }
         } catch (RuntimeException ex) {
             port = 800;
         }

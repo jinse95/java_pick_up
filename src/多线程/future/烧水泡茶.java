@@ -1,6 +1,3 @@
-/*
- * Copyright (c) 2019 800best.com. All Rights Reserved.
- */
 package 多线程.future;
 
 import java.util.concurrent.Callable;
@@ -8,10 +5,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 
-/**
- * @author BG388558
- * @since
- */
+
 public class 烧水泡茶 {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         // 创建任务 T2 的 FutureTask
