@@ -1,12 +1,4 @@
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.nio.ByteBuffer;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author J
@@ -34,7 +26,6 @@ public class Test {
 
 
         String contentStr = "nihaonullnull";
-
 
         System.out.println(contentStr.replace("null",""));
         System.out.println(new Test().member.name);

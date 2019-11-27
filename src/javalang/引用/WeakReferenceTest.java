@@ -1,5 +1,6 @@
 package javalang.引用;
 
+import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
 
 /**
@@ -10,6 +11,7 @@ import java.lang.ref.WeakReference;
 public class WeakReferenceTest {
     public static void main(String[] args) {
 
+        ReferenceQueue queue = new ReferenceQueue();
         String hl = new String("hello");
         WeakReference<String> sr = new WeakReference<>(hl);
         System.out.println(sr.get());
