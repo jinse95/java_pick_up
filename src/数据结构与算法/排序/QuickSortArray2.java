@@ -27,24 +27,26 @@ public class QuickSortArray2 {
     }
 
     public static void quickSort(int[] array, int low, int high) {
-        if (low < high) {
-            Stack<int[]> stack = new Stack<>();
-            int middle = partition(array, low, high);
-            if (middle - 1 > low) {
-                stack.push(new int[]{low, middle - 1});
+        if (low >= high) {
+            return;
+        }
+
+        Stack<int[]> stack = new Stack<>();
+        int middle = partition(array, low, high);
+        if (middle - 1 > low) {
+            stack.push(new int[]{low, middle - 1});
+        }
+        if (middle + 1 < high) {
+            stack.push(new int[]{middle + 1, high});
+        }
+        while (!stack.isEmpty()) {
+            int[] item = stack.pop();
+            middle = partition(array, item[0], item[1]);
+            if (middle - 1 > item[0]) {
+                stack.push(new int[]{item[0], middle - 1});
             }
-            if (middle + 1 < high) {
-                stack.push(new int[]{middle + 1, high});
-            }
-            while (!stack.isEmpty()) {
-                int[] item = stack.pop();
-                middle = partition(array, item[0], item[1]);
-                if (middle - 1 > item[0]) {
-                    stack.push(new int[]{item[0], middle - 1});
-                }
-                if (middle + 1 < item[1]) {
-                    stack.push(new int[]{middle + 1, item[1]});
-                }
+            if (middle + 1 < item[1]) {
+                stack.push(new int[]{middle + 1, item[1]});
             }
         }
     }
